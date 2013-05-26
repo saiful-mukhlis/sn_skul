@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="MySql" database="MySql" >
+	<schema name="shop" catalogname="shop" defo="y" >
+		<table name="bahan" >
+			<column name="id" type="INT" jt="4" mandatory="y" autoincrement="y" />
+			<column name="nama" type="VARCHAR" length="50" jt="12" />
+			<index name="pk_bahan" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<index name="nama" unique="UNIQUE" >
+				<column name="nama" />
+			</index>
+		</table>
+		<table name="bahanp" >
+			<column name="id" type="INT" jt="4" mandatory="y" autoincrement="y" />
+			<column name="bahanid" type="INT" jt="4" />
+			<column name="pid" type="INT" jt="4" />
+			<index name="pk_imgp_3" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<index name="pid" unique="NORMAL" >
+				<column name="pid" />
+			</index>
+			<fk name="bahanp_ibfk_3" to_schema="shop" to_table="product" delete_action="CASCADE" update_action="CASCADE" >
+				<fk_column name="pid" pk="id" />
+			</fk>
+			<fk name="bahanp_ibfk_1" to_schema="shop" to_table="bahan" delete_action="CASCADE" update_action="CASCADE" >
+				<fk_column name="bahanid" pk="id" />
+			</fk>
+		</table>
+		<table name="brand" >
+			<column name="id" type="INT" jt="4" mandatory="y" autoincrement="y" />
+			<column name="nama" type="VARCHAR" length="50" jt="12" />
+			<index name="pk_bahan_0" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+		</table>
+		<table name="brandp" >
+			<column name="id" type="INT" jt="4" mandatory="y" autoincrement="y" />
+			<column name="brandid" type="INT" jt="4" />
+			<column name="pid" type="INT" jt="4" />
+			<index name="pk_imgp_4" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<index name="brandid_2" unique="UNIQUE" >
+				<column name="brandid" />
+				<column name="pid" />
+			</index>
+			<index name="brandid" unique="NORMAL" >
+				<column name="brandid" />
+			</index>
+			<index name="pid" unique="NORMAL" >
+				<column name="pid" />
+			</index>
+			<fk name="brandp_ibfk_3" to_schema="shop" to_table="product" delete_action="CASCADE" update_action="CASCADE" >
+				<fk_column name="pid" pk="id" />
+			</fk>
+			<fk name="brandp_ibfk_1" to_schema="shop" to_table="brand" delete_action="CASCADE" update_action="CASCADE" >
+				<fk_column name="brandid" pk="id" />
+			</fk>
+		</table>
+		<table name="img" >
+			<column name="id" type="INT" jt="4" mandatory="y" autoincrement="y" />
+			<column name="nama" type="VARCHAR" length="100" jt="12" />
+			<index name="pk_imgp" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+		</table>
+		<table name="imgp" >
+			<column name="id" type="INT" jt="4" mandatory="y" autoincrement="y" />
+			<column name="imgid" type="INT" jt="4" />
+			<column name="pid" type="INT" jt="4" />
+			<index name="pk_imgp_0" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<index name="pid_2" unique="UNIQUE" >
+				<column name="pid" />
+				<column name="imgid" />
+			</index>
+			<index name="imageid" unique="NORMAL" >
+				<column name="imgid" />
+			</index>
+			<index name="pid" unique="NORMAL" >
+				<column name="pid" />
+			</index>
+			<fk name="imgp_ibfk_2" to_schema="shop" to_table="product" delete_action="CASCADE" update_action="CASCADE" >
+				<fk_column name="pid" pk="id" />
+			</fk>
+			<fk name="imgp_ibfk_1" to_schema="shop" to_table="img" delete_action="CASCADE" update_action="CASCADE" >
+				<fk_column name="imgid" pk="id" />
+			</fk>
+		</table>
+		<table name="motif" >
+			<column name="id" type="INT" jt="4" mandatory="y" autoincrement="y" />
+			<column name="nama" type="VARCHAR" length="50" jt="12" />
+			<index name="pk_motif" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<index name="nama" unique="UNIQUE" >
+				<column name="nama" />
+			</index>
+		</table>
+		<table name="motifp" >
+			<column name="id" type="INT" jt="4" mandatory="y" autoincrement="y" />
+			<column name="motifid" type="INT" jt="4" />
+			<column name="pid" type="INT" jt="4" />
+			<index name="pk_imgp_2" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<index name="pid_2" unique="UNIQUE" >
+				<column name="pid" />
+				<column name="motifid" />
+			</index>
+			<index name="motifid" unique="NORMAL" >
+				<column name="motifid" />
+			</index>
+			<index name="pid" unique="NORMAL" >
+				<column name="pid" />
+			</index>
+			<fk name="motifp_ibfk_2" to_schema="shop" to_table="product" delete_action="CASCADE" update_action="CASCADE" >
+				<fk_column name="pid" pk="id" />
+			</fk>
+			<fk name="motifp_ibfk_1" to_schema="shop" to_table="motif" delete_action="CASCADE" update_action="CASCADE" >
+				<fk_column name="motifid" pk="id" />
+			</fk>
+		</table>
+		<table name="nav" >
+			<column name="id" type="INT" length="10" jt="4" mandatory="y" autoincrement="y" />
+			<column name="name" type="VARCHAR" length="100" jt="12" />
+			<column name="url" type="VARCHAR" length="100" jt="12" />
+			<column name="sort" type="INT" length="10" jt="4" />
+			<index name="pk_nav" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+		</table>
+		<table name="navc" >
+			<column name="id" type="INT" length="10" jt="4" mandatory="y" autoincrement="y" />
+			<column name="navid" type="INT" length="10" jt="4" />
+			<column name="name" type="VARCHAR" length="100" jt="12" />
+			<column name="model" type="TINYINT" length="3" jt="-6" />
+			<column name="sort" type="INT" length="10" jt="4" />
+			<column name="url" type="VARCHAR" length="225" jt="12" />
+			<index name="pk_navc" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<fk name="navc_ibfk_1" to_schema="shop" to_table="nav" delete_action="CASCADE" update_action="CASCADE" >
+				<fk_column name="navid" pk="id" />
+			</fk>
+		</table>
+		<table name="product" >
+			<column name="id" type="INT" jt="4" mandatory="y" autoincrement="y" />
+			<column name="nama" type="VARCHAR" length="100" jt="12" />
+			<column name="rating" type="TINYINT" jt="-6" />
+			<column name="status" type="TINYINT" length="1" jt="-6" />
+			<column name="ket" type="VARCHAR" length="255" jt="12" />
+			<column name="imgid" type="INT" jt="4" />
+			<index name="pk_product" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+		</table>
+		<table name="profile" >
+			<column name="id" type="INT" jt="4" mandatory="y" autoincrement="y" />
+			<column name="nama" type="VARCHAR" length="100" jt="12" />
+			<column name="tlp" type="VARCHAR" length="50" jt="12" />
+			<column name="bb" type="VARCHAR" length="20" jt="12" />
+			<column name="ket1" type="VARCHAR" length="100" jt="12" />
+			<column name="ket2" type="VARCHAR" length="100" jt="12" />
+			<index name="pk_profile" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+		</table>
+		<table name="ptype" >
+			<column name="id" type="INT" jt="4" mandatory="y" autoincrement="y" />
+			<column name="nama" type="VARCHAR" length="50" jt="12" />
+			<index name="pk_ukurantype" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+		</table>
+		<table name="pu" >
+			<column name="id" type="INT" jt="4" mandatory="y" autoincrement="y" />
+			<column name="ukuranid" type="INT" jt="4" />
+			<column name="pid" type="INT" jt="4" />
+			<column name="hg1" type="DECIMAL" length="12" decimal="2" jt="3" />
+			<column name="hg2" type="DECIMAL" length="12" decimal="2" jt="3" />
+			<column name="kethg1" type="VARCHAR" length="50" jt="12" />
+			<column name="kethg2" type="VARCHAR" length="50" jt="12" />
+			<column name="diskonphg1" type="DECIMAL" length="3" decimal="2" jt="3" />
+			<column name="diskonphg2" type="DECIMAL" length="3" decimal="2" jt="3" />
+			<column name="diskonhg1" type="DECIMAL" length="12" decimal="2" jt="3" />
+			<column name="diskonhg2" type="DECIMAL" length="12" decimal="2" jt="3" />
+			<column name="imgid" type="INT" length="255" jt="4" />
+			<index name="pk_imgp_5" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<index name="ukuranid" unique="NORMAL" >
+				<column name="ukuranid" />
+			</index>
+			<index name="imgid" unique="NORMAL" >
+				<column name="imgid" />
+			</index>
+			<index name="pid" unique="NORMAL" >
+				<column name="pid" />
+			</index>
+			<fk name="pu_ibfk_2" to_schema="shop" to_table="product" delete_action="CASCADE" update_action="CASCADE" >
+				<fk_column name="pid" pk="id" />
+			</fk>
+			<fk name="pu_ibfk_1" to_schema="shop" to_table="ukuran" delete_action="CASCADE" update_action="CASCADE" >
+				<fk_column name="ukuranid" pk="id" />
+			</fk>
+		</table>
+		<table name="ukuran" >
+			<column name="id" type="INT" jt="4" mandatory="y" autoincrement="y" />
+			<column name="nama" type="VARCHAR" length="100" jt="12" />
+			<column name="short" type="INT" length="10" jt="4" mandatory="y" />
+			<index name="pk_ukuran" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+		</table>
+		<table name="warna" >
+			<column name="id" type="INT" jt="4" mandatory="y" autoincrement="y" />
+			<column name="nama" type="VARCHAR" length="50" jt="12" />
+			<column name="code" type="VARCHAR" length="7" jt="12" mandatory="y" />
+			<index name="pk_warna" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+		</table>
+		<table name="warnap" >
+			<column name="id" type="INT" jt="4" mandatory="y" autoincrement="y" />
+			<column name="warnaid" type="INT" jt="4" />
+			<column name="pid" type="INT" jt="4" />
+			<index name="pk_imgp_1" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<index name="pid_2" unique="UNIQUE" >
+				<column name="pid" />
+				<column name="warnaid" />
+			</index>
+			<index name="warnaid" unique="NORMAL" >
+				<column name="warnaid" />
+			</index>
+			<index name="pid" unique="NORMAL" >
+				<column name="pid" />
+			</index>
+			<fk name="warnap_ibfk_1" to_schema="shop" to_table="warna" delete_action="CASCADE" update_action="CASCADE" >
+				<fk_column name="warnaid" pk="id" />
+			</fk>
+			<fk name="warnap_ibfk_2" to_schema="shop" to_table="product" delete_action="CASCADE" update_action="CASCADE" >
+				<fk_column name="pid" pk="id" />
+			</fk>
+		</table>
+	</schema>
+	<connector name="MySql" database="MySql" driver_class="com.mysql.jdbc.Driver" driver_jar="mysql-connector-java-5.1.20-bin.jar" host="localhost" port="3306" user="root" schema_mapping="" />
+	<layout name="shop" show_relation_columns="y" >
+		<entity schema="shop" name="navc" x="42" y="42" />
+		<entity schema="shop" name="nav" x="154" y="42" />
+		<entity schema="shop" name="profile" x="392" y="42" />
+		<entity schema="shop" name="warna" x="42" y="210" />
+		<entity schema="shop" name="motif" x="154" y="210" />
+		<entity schema="shop" name="bahan" x="266" y="210" />
+		<entity schema="shop" name="brand" x="392" y="210" />
+		<entity schema="shop" name="ptype" x="658" y="42" />
+		<entity schema="shop" name="ukuran" x="504" y="42" />
+		<entity schema="shop" name="img" x="504" y="210" />
+		<entity schema="shop" name="bahanp" x="294" y="308" />
+		<entity schema="shop" name="brandp" x="406" y="308" />
+		<entity schema="shop" name="pu" x="658" y="266" />
+		<entity schema="shop" name="warnap" x="42" y="392" />
+		<entity schema="shop" name="motifp" x="182" y="378" />
+		<entity schema="shop" name="imgp" x="532" y="392" />
+		<entity schema="shop" name="product" x="252" y="42" />
+	</layout>
+</project>
